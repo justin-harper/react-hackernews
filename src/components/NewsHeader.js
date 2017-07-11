@@ -16,7 +16,7 @@ class NewsHeader extends React.Component {
   getLogo() {
     return (
       <div className="newsHeader-logo">
-        <a href="https://www.ycombinator.com"><img src={y18} /></a>
+        <a href="https://www.ycombinator.com"><img src={y18} alt="Y Combinator"/></a>
       </div>
     );
   };
@@ -51,6 +51,7 @@ class NewsHeader extends React.Component {
 
     return (
       <div className="newsHeader-nav">
+        {" |"}
         {_(navLinks).map(function (navLink) {
           return (
             <a key={navLink.url} className="newsHeader-navLink newsHeader-textLink" href={'https://news.ycombinator.com/' + navLink.url}>

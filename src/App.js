@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       items: [],
       loading: true
-    }    
+    }
   }
 
   getStuff() {
@@ -29,46 +29,54 @@ class App extends Component {
           });
         }).value();
         return $.when.apply($, detailDeferreds);
-    
+
       }).then(function () {
         let items = _(arguments).map(function (argument) {
           return argument[0];
         }).value();
-        console.log(items);
         ix.setState({
           items: items,
           loading: false
         });
-        //console.log(this.state);
-      })
-    
+      });
+  }
+  tick() {
+    this.setState({ loading: true});
+    this.getStuff();
+  }
+
+  componentWillMount() {
+    window.addEventListener('scroll', this.handleScroll.bind(this));
   }
 
   componentDidMount() {
-    console.log("GetStuff");
     this.getStuff();
-  }  
+  }
+
+  handleScroll(event) {
+    clearTimeout(this.timer);
+    this.setTimer();
+  }
+
+  setTimer() {
+    this.timer = setInterval(this.tick.bind(this), 300000);
+  }
 
   render() {
     if(this.state.loading) {
       return (
-        <div><h1>LOADING...</h1></div>
+        <div className="app-Loading"><h1>LOADING...</h1></div>
       );
     }
     else {
-      console.log("LOL");
+      this.setTimer();
       return (
         <div className="App">
           <NewsList items={this.state.items} />
         </div>
       );
-    }  
+    }
   }
 }
 
 export default App;
-
-
-
-
-

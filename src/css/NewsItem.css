@@ -1,28 +1,70 @@
-.newsItem {
-  color: #828282;
-  margin-top: 5px;
+.newsItem-Outter {
+  background: #1D1F21;
+  color: #C5C8C6;
+  margin: 10px;
 }
 
-.newsItem-titleLink {
-  color: black;
-  font-size: 14pt;
-  text-decoration: none;
+.newsItem {
+  /*actual headline*/
+  background: #1D1F21;
+  color: #C5C8C6;
+  margin-top: 5px;
+  text-align: left;
+  font-size: 20pt;
 }
+
+.newsItem-rank {
+  /*number*/
+  color: #B5BD68;
+  font-size: 20pt;
+}
+
+/*.newsItem-titleLink {
+  color: #C5C8C6;
+  font-size: 50pt;
+  text-decoration: none;
+}*/
 
 .newsItem-domain {
+  /*(website)*/
   font-size: 12pt;
   margin-left: 5px;
+  color: #8ABEB7;
+}
+
+.newsItem-time {
+  color: #B294BB;
 }
 
 .newsItem-subtext {
-  font-size: 10pt;
+  /*points*/
+  color: #B5BD68;
+  font-size: 14pt;
+}
+
+.newsItem-User {
+  color: #8ABEB7;
+  font-weight: bold;
+  /*font-size: 15pt;*/
 }
 
 .newsItem-subtext > a {
-  color: #828282;
+  color: #8ABEB7;
   text-decoration: none;
+
+}
+
+a {
+  text-decoration: none;
+  color: #C5C8C6;
+  font-weight: bold;
 }
 
 .newsItem-subtext > a:hover{
   text-decoration: underline;
+}
+
+.newsItem-id {
+  font-size: 15pt;
+  color: #B294BB;
 }

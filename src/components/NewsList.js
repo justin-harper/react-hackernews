@@ -18,8 +18,15 @@ class NewsList extends React.Component {
         <NewsHeader />
         <div className="newsList-items">
           {_(this.props.items).map(function (item, index) {
-            return <NewsItem key={item.id} item={item} rank={index + 1} />;
-          }.bind(this)).value()}
+            return (
+              <div className="newsList-newsItem">
+                <div className="newsList-seperator">
+                  <NewsItem key={item.id} item={item} rank={index + 1} />
+                </div>
+                <div className="newsList-border"></div>
+              </div>
+            );
+          }).value()}
         </div>
         {this.getMore()}
       </div>
