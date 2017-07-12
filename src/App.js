@@ -12,11 +12,13 @@ class App extends Component {
     super();
     this.state = {
       items: [],
-      loading: true
-    }
-  }
+      loading: true,     
+    }    
+    this.getStuff = _.debounce(this.getStuff, 10000);    
+  }  
 
   getStuff() {
+    this.setState({ loading: true, items: null});
     let ix = this;
     $.ajax({
         url: 'https://hacker-news.firebaseio.com/v0/topstories.json',
@@ -29,24 +31,23 @@ class App extends Component {
           });
         }).value();
         return $.when.apply($, detailDeferreds);
-
       }).then(function () {
         let items = _(arguments).map(function (argument) {
           return argument[0];
         }).value();
         ix.setState({
           items: items,
-          loading: false
+          loading: false,          
         });
       });
   }
-  tick() {
-    this.setState({ loading: true});
-    this.getStuff();
+  tick() {               
+      this.getStuff();
   }
 
   componentWillMount() {
-    window.addEventListener('scroll', this.handleScroll.bind(this));
+    window.addEventListener('scroll', this.handleScroll.bind(this));    
+    this.setTimer();
   }
 
   componentDidMount() {
@@ -54,12 +55,13 @@ class App extends Component {
   }
 
   handleScroll(event) {
-    clearTimeout(this.timer);
-    this.setTimer();
+      clearInterval(this.timer);
+      this.setTimer();
   }
 
-  setTimer() {
-    this.timer = setInterval(this.tick.bind(this), 300000);
+  setTimer() {        
+    this.timer = setInterval(this.tick.bind(this), 300000);//10000);//300000);
+    console.log(this.timer);
   }
 
   render() {
@@ -68,8 +70,7 @@ class App extends Component {
         <div className="app-Loading"><h1>LOADING...</h1></div>
       );
     }
-    else {
-      this.setTimer();
+    else {     
       return (
         <div className="App">
           <NewsList items={this.state.items} />
