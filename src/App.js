@@ -60,8 +60,7 @@ class App extends Component {
   }
 
   setTimer() {        
-    this.timer = setInterval(this.tick.bind(this), 300000);//10000);//300000);
-    console.log(this.timer);
+    this.timer = setInterval(this.tick.bind(this), 300000);//10000);//300000);    
   }
 
   render() {
