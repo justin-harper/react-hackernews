@@ -2,6 +2,7 @@ import React from 'react';
 import NewsHeader from './NewsHeader';
 import NewsItem from './NewsItem';
 import _ from 'lodash';
+import '../css/NewsList.css';
 
 class NewsList extends React.Component {
   getMore() {

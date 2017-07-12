@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
 import NewsItem from './components/NewsItem'
 import $ from 'jquery';
 import _ from 'lodash';
 import NewsList from './components/NewsList';
-
+import './css/app.css';
 
 class App extends Component {
   constructor() {

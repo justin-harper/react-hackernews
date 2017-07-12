@@ -1,6 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
 import y18 from '../img/y18.gif'
+import '../css/NewsHeader.css';
+
 
 class NewsHeader extends React.Component {
   getLogin() {

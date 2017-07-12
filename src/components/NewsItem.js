@@ -2,6 +2,8 @@ import React from 'react';
 import url from 'url';
 import moment from 'moment';
 import greyArrow from '../img/grayarrow2x.gif';
+import '../css/NewsItem.css';
+
 
 class NewsItem extends React.Component {
   getDomain() {
